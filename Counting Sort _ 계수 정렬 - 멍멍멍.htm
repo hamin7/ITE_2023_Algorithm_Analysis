@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://bowbowbow.tistory.com/8 -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/menubar.css"><!--[if lt IE 9]><script src="https://t1.daumcdn.net/tistory_admin/lib/jquery/jquery-1.12.4.min.js"></script><![endif]--><!--[if gte IE 9]>
+<!--><script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/f.txt"></script><script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/ca-pub-4370424140134015.js"></script><script async="" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/analytics.js"></script><script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/jquery-3.2.1.min.js"></script><!--<![endif]-->
+<script>var tjQuery = jQuery.noConflict(true);</script><style type="text/css">.tt_article_useless_p_margin p {padding-top:0 !important;padding-bottom:0 !important;margin-top:0 !important;margin-bottom:0 !important;}</style><meta name="referrer" content="always"><link rel="icon" href="https://t1.daumcdn.net/cfile/tistory/21355B4E56E128E81D"><link rel="apple-touch-icon" href="http://i1.daumcdn.net/thumb/C180x180/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2119864C56E1268121">
+<link rel="apple-touch-icon" sizes="76x76" href="http://i1.daumcdn.net/thumb/C76x76/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2119864C56E1268121">
+<link rel="apple-touch-icon" sizes="120x120" href="http://i1.daumcdn.net/thumb/C120x120/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2119864C56E1268121">
+<link rel="apple-touch-icon" sizes="152x152" href="http://i1.daumcdn.net/thumb/C152x152/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2119864C56E1268121"><meta name="description" content="Counting Sort  Counting Sort Counting Sort 소개 정렬 과정 애니메이션 예시 구현 정리 끝 소개 Counting Sort 는 정렬 알고리즘으로 의 시간복잡도를 갖습니다. 반면 일반적 상황에서 가장 빠른 정렬 알고리즘..">
+
+<!-- BEGIN OPENGRAPH -->
+<link rel="canonical" href="http://bowbowbow.tistory.com/8"><meta property="og:type" content="article"><meta property="og:url" content="http://bowbowbow.tistory.com/8"><meta property="og:site_name" content="멍멍멍"><meta property="og:title" content="Counting Sort : 계수 정렬"><meta name="by" content="bowbowbow yswon"><meta property="og:description" content="Counting Sort  Counting Sort Counting Sort 소개 정렬 과정 애니메이션 예시 구현 정리 끝 소개 Counting Sort 는 정렬 알고리즘으로 의 시간복잡도를 갖습니다. 반면 일반적 상황에서 가장 빠른 정렬 알고리즘.."><meta property="og:image" content="https://t1.daumcdn.net/cfile/tistory/22538A4D56D2FFBA2E"><meta property="article:section" content="과학">
+<!-- END OPENGRAPH -->
+
+
+
+<!-- BEGIN TWITTERCARD -->
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@TISTORY"><meta name="twitter:title" content="Counting Sort : 계수 정렬"><meta name="twitter:description" content="Counting Sort  Counting Sort Counting Sort 소개 정렬 과정 애니메이션 예시 구현 정리 끝 소개 Counting Sort 는 정렬 알고리즘으로 의 시간복잡도를 갖습니다. 반면 일반적 상황에서 가장 빠른 정렬 알고리즘.."><meta property="twitter:image" content="https://t1.daumcdn.net/cfile/tistory/22538A4D56D2FFBA2E">
+<!-- END TWITTERCARD -->
+
+
+
+<!-- BEGIN DAUMAPP -->
+<meta property="dg:plink" content="http://bowbowbow.tistory.com/8"><meta name="plink" content="http://bowbowbow.tistory.com/8"><meta name="title" content="Counting Sort : 계수 정렬"><meta name="article:media_name" content="멍멍멍"><meta property="article:mobile_url" content="http://bowbowbow.tistory.com/m/8"><meta property="article:pc_url" content="http://bowbowbow.tistory.com/8"><meta property="article:mobile_view_url" content="http://bowbowbow.tistory.com/m/8"><meta property="article:pc_view_url" content="http://bowbowbow.tistory.com/8"><meta property="article:talk_channel_view_url" content="http://bowbowbow.tistory.com/m/8"><meta property="article:pc_service_home" content="https://www.tistory.com"><meta property="article:mobile_service_home" content="https://www.tistory.com/m"><meta property="article:txid" content="1940220_8"><meta property="article:published_time" content="2016-02-28T23:11:21+09:00"><meta property="og:regDate" content="20160228231121"><meta property="article:modified_time" content="2016-06-04T04:24:23+09:00">
+<!-- END DAUMAPP -->
+
+
+
+<!-- BEGIN STRUCTURED_DATA -->
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":{"@id":"http:\/\/bowbowbow.tistory.com\/8"},"url":"http:\/\/bowbowbow.tistory.com\/8","headline":"Counting Sort : \uacc4\uc218 \uc815\ub82c","description":"Counting Sort  Counting Sort Counting Sort \uc18c\uac1c \uc815\ub82c \uacfc\uc815 \uc560\ub2c8\uba54\uc774\uc158 \uc608\uc2dc \uad6c\ud604 \uc815\ub9ac \ub05d \uc18c\uac1c Counting Sort \ub294 \uc815\ub82c \uc54c\uace0\ub9ac\uc998\uc73c\ub85c \uc758 \uc2dc\uac04\ubcf5\uc7a1\ub3c4\ub97c \uac16\uc2b5\ub2c8\ub2e4. \ubc18\uba74 \uc77c\ubc18\uc801 \uc0c1\ud669\uc5d0\uc11c \uac00\uc7a5 \ube60\ub978 \uc815\ub82c \uc54c\uace0\ub9ac\uc998..","author":{"@type":"Person","name":"bowbowbow yswon"},"image":{"@type":"ImageObject","url":"https:\/\/t1.daumcdn.net\/cfile\/tistory\/22538A4D56D2FFBA2E","width":"800px","height":"800px"},"datePublished":"20160228T23:11:21+09:00","dateModified":"20160604T04:24:23+09:00","publisher":{"@type":"Organization","name":"TISTORY","logo":{"@type":"ImageObject","url":"https:\/\/t1.daumcdn.net\/cssjs\/icon\/557567EA016E200001","width":"800px","height":"800px"}}}</script>
+<!-- END STRUCTURED_DATA -->
+
+
+
+	
+	<meta name="google-site-verification" content="A26SOW55iV1rJmu4Qou7GtwjG9uxNlmNnd_SyqyEHIs">
+	<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,width=device-width,target-densitydpi=medium-dpi">
+	<script async="" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/f(1).txt"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4370424140134015",
+    enable_page_level_ads: true
+  });
+</script>
+	<title>Counting Sort : 계수 정렬 - 멍멍멍</title>
+	<link rel="alternate" type="application/rss+xml" title="멍멍멍" href="http://bowbowbow.tistory.com/rss">
+
+	<link rel="stylesheet" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/style.css">
+	<link rel="stylesheet" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/font.css">
+
+	<!--[if lt IE 9]>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+	<script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/jquery.min.js"></script><link rel="preload" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/f(2).txt" as="script"><script type="text/javascript" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/f(2).txt"></script><link rel="preload" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/f(3).txt" as="script"><script type="text/javascript" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/f(3).txt"></script>
+	<!--<![endif]-->
+<link rel="stylesheet" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/lightbox.min.css">
+<link rel="stylesheet" type="text/css" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/style(1).css">
+<script type="text/javascript" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/profile.js"></script>
+<script type="text/javascript">
+        window.TistoryBlog = {
+            url: "http://bowbowbow.tistory.com",
+            tistoryUrl: "http://bowbowbow.tistory.com",
+			manageUrl: 'https://bowbowbow.tistory.com/manage'
+        };
+        var servicePath = "";
+        var blogURL = "";
+    </script>
+
+	<script> (function() { window.orgjQuery = window.jQuery; window.jQuery = tjQuery })()</script>
+    <script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/uoclike.min.js"></script>
+	<script> (function() { window.jQuery = window.orgjQuery; delete window.orgjQuery })()</script>
+    <script>
+		(function($) {
+			$.fn.extend({
+				size: function () {
+					return this.length
+				}
+			});
+			$.fn.UOCLike.defaults.updateServiceCategory = true;
+					})(tjQuery)
+    </script>
+        <script type="text/javascript" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/base.js"></script>
+        <link rel="stylesheet" type="text/css" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/dialog.css">
+            <link rel="stylesheet" type="text/css" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/postBtn.css">
+    <script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/kakao.min.js"></script><script type="text/javascript" async="" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/td.min.js"></script><link rel="stylesheet" type="text/css" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/uoclike.min-20150408-2.css"></head>
+
+<body id="tt-body-page">
+
+<script type="text/javascript">
+	(function() {
+		if (!window.T) {
+			window.T = {}
+		}
+		window.T.config = {"TOP_SSL_URL":"https:\/\/www.tistory.com","PREVIEW":false,"ROLE":"guest","PREV_PAGE":"\/9","NEXT_PAGE":"\/7","BLOG":{"isDormancy":true,"title":"\uba4d\uba4d\uba4d"},"NEED_COMMENT_LOGIN":true,"COMMENT_LOGIN_CONFIRM_MESSAGE":"\uc774 \ube14\ub85c\uadf8\ub294 \ud734\uba74 \uc0c1\ud0dc\uc774\ubbc0\ub85c \ub85c\uadf8\uc778\ud55c \uc0ac\uc6a9\uc790\uc5d0\uac8c\ub9cc \uba4d\uba4d\uba4d \uc791\uc131\uc774 \ud5c8\uc6a9\ub429\ub2c8\ub2e4. \uc9c0\uae08 \ub85c\uadf8\uc778\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?","LOGIN_URL":"https:\/\/www.tistory.com\/auth\/login\/?redirectUrl=http%3A%2F%2Fbowbowbow.tistory.com%2F8","DEFAULT_URL":"http:\/\/bowbowbow.tistory.com","USER":{"name":null,"homepage":null}};
+	})();
+</script>
+
+<script type="text/javascript" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/common.js"></script>
+<div style="margin:0; padding:0; border:none; background:none; float:none; clear:none; z-index:0"></div>
+	<div id="dkIndex">
+		<a href="http://bowbowbow.tistory.com/8#dkBody">본문 바로가기</a>
+		<a href="http://bowbowbow.tistory.com/8#dkGnb">메뉴 바로가기</a>
+	</div>
+
+	<div id="dkWrap" class="wrap_skin ">
+		<div id="dkHead" role="banner" class="area_head ">
+			<h1 class="screen_out">멍멍멍</h1>
+			<div class="area_profile ">
+				<a class="link_profile" href="http://bowbowbow.tistory.com/"><img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2119864C56E1268121" width="50" height="50" class="img_profile" alt="프로필사진"></a>
+				<div class="info_profile">
+					<button type="button" class="btn_name">yswon
+						<span class="ico_skin ico_name"></span>
+					</button>
+					<ul class="list_name">
+						<li><a href="https://bowbowbow.tistory.com/manage/entry/post" class="link_name">글쓰기</a></li>
+						<li><a href="https://bowbowbow.tistory.com/manage" class="link_name">관리</a></li>
+						<li class="box_division"><a href="http://bowbowbow.tistory.com/tag" class="link_name">태그</a></li>
+						<li><a href="http://bowbowbow.tistory.com/guestbook" class="link_name">방명록</a></li>
+						<li><a href="http://bowbowbow.tistory.com/rss" class="link_name">RSS</a></li>
+					</ul>
+					<p class="txt_condition">멍멍멍</p>
+				</div>
+			</div>
+
+			<button type="button" class="btn_menu">
+				<span class="ico_skin ico_menu">카테고리 메뉴열기</span>
+			</button>
+		</div>
+
+		<div class="dimmed_layer"></div>
+
+		<button type="button" class="btn_close">
+			<span class="ico_skin ico_close">닫기</span>
+		</button>
+
+		<div class="area_menu">
+			
+				<div class="area_search">
+					<button type="button" class="btn_search">
+						<span class="ico_skin ico_search">검색하기</span>
+					</button>
+					<form action="http://bowbowbow.tistory.com/8#" method="get" class="frm_search" onsubmit="try{window.location.href=&#39;/search/&#39;+looseURIEncode(document.getElementsByName(&#39;search&#39;)[0].value);document.getElementsByName(&#39;search&#39;)[0].value=&#39;&#39;;return false;}catch(e){}">
+						<fieldset>
+							<legend class="screen_out">검색하기 폼</legend>
+							<label for="tfSearch" class="ico_skin lab_search">검색하기</label>
+							<input type="text" name="search" value="" class="tf_search">
+						</fieldset>
+					</form>
+				</div>
+			
+
+			<div role="navigation" class="area_navi">
+				<button type="button" class="btn_cate">CATEGORY <span class="ico_skin ico_cate"></span></button>
+
+				<div class="list_cate">
+					<ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="http://bowbowbow.tistory.com/category">
+			분류 전체보기							<span class="c_cnt">(25)</span>
+			
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="http://bowbowbow.tistory.com/category/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98">
+						알고리즘													<span class="c_cnt">(12)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://bowbowbow.tistory.com/category/%EB%AC%B8%EC%A0%9C">
+						문제													<span class="c_cnt">(6)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://bowbowbow.tistory.com/category/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C">
+						운영체제													<span class="c_cnt">(4)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://bowbowbow.tistory.com/category/%EB%A6%AC%EB%88%85%EC%8A%A4">
+						리눅스													<span class="c_cnt">(2)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="http://bowbowbow.tistory.com/category/%EC%BB%B4%ED%93%A8%ED%84%B0%20%EA%B5%AC%EC%A1%B0">
+						컴퓨터 구조													<span class="c_cnt">(1)</span>
+						
+											</a>
+
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+
+					<ul class="menu_profile">
+						<li><a href="http://bowbowbow.tistory.com/guestbook">방명록</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<hr class="hide">
+
+		
+
+		<div id="dkContent" class="cont_skin" role="main">
+			<div id="cMain">
+
+				
+
+				
+
+				
+					<div id="mArticle" class="article_skin">
+
+						
+
+						
+							<div class="skin_view">
+								<h2 id="dkBody" class="screen_out">티스토리 뷰</h2>
+								<div class="area_title">
+									<strong class="tit_category"><a href="http://bowbowbow.tistory.com/category/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98">알고리즘</a></strong>
+									<h3 class="tit_post"><a href="http://bowbowbow.tistory.com/8">Counting Sort : 계수 정렬</a></h3>
+									<span class="txt_detail my_post">bowbowbow yswon
+										<span class="txt_bar"></span>2016.02.28 23:11
+										
+									</span>
+								</div>
+								<div class="area_view">
+									<div class=""><title>Counting Sort</title><link href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/marxico.css" rel="stylesheet"><style>.note-content .small-font {font-size: 12px;}
+
+.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+
+</style><div id="preview-contents" class="note-content">
+                        <div id="wmd-preview" class="preview-content"></div>
+                    <div id="wmd-preview-section-14604" class="wmd-preview-section preview-content">
+
+</div><div id="wmd-preview-section-14605" class="wmd-preview-section preview-content">
+
+<h1 style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:400px;width: 400px; height: 400px;;height:auto;max-width:100%"><span data-url="https://t1.daumcdn.net/cfile/tistory/210C794156E24D5B1D?original" data-lightbox="lightbox"><img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/210C794156E24D5B1D" style="cursor: pointer;max-width:100%;height:auto" width="400" height="400" filename="2.png" filemime="image/jpeg"></span></span></h1><h1 id="counting-sort">Counting Sort</h1>
+
+<div><div class="toc"><div class="toc">
+<ul>
+<li><a href="http://bowbowbow.tistory.com/8#counting-sort">Counting Sort</a><ul>
+<li><a href="http://bowbowbow.tistory.com/8#%EC%86%8C%EA%B0%9C">소개</a></li>
+<li><a href="http://bowbowbow.tistory.com/8#%EC%A0%95%EB%A0%AC-%EA%B3%BC%EC%A0%95">정렬 과정</a></li>
+<li><a href="http://bowbowbow.tistory.com/8#%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98-%EC%98%88%EC%8B%9C">애니메이션 예시</a></li>
+<li><a href="http://bowbowbow.tistory.com/8#%EA%B5%AC%ED%98%84">구현</a></li>
+<li><a href="http://bowbowbow.tistory.com/8#%EC%A0%95%EB%A6%AC">정리</a></li>
+<li><a href="http://bowbowbow.tistory.com/8#%EB%81%9D">끝</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div><div id="wmd-preview-section-14606" class="wmd-preview-section preview-content">
+
+<h2 id="소개">소개</h2>
+
+<p><code>Counting Sort</code>는 정렬 알고리즘으로 <span class="" rel="1f08ccc9cd7309ba1e756c3d9345ad9f"><span class="MathJax_SVG" id="MathJax-Element-91-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="34" height="16" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/274BE64056E755500D" style="margin-top:0;margin-bottom:0;"></span></span></span>의 시간복잡도를 갖습니다. 반면 <strong>일반적 상황</strong>에서 <strong>가장 빠른 정렬</strong> 알고리즘인 <code>Quick Sort</code>의 시간복잡도 <span class="" rel="743c00b1fa7d59c887892656948b54b8"><span class="MathJax_SVG" id="MathJax-Element-92-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="67" height="17" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2103E24F56E7555008" style="margin-top:0;margin-bottom:0;"></span></span></span>입니다. </p>
+<p><strong>Counting Sort</strong>는 어떻게 이렇게 빠를까요? 그럼 왜 대부분의 정렬이 필요한 상황에서 더 빠른 <strong>Counting Sort</strong>를 안 쓰고 <strong>Quick Sort</strong>를 쓸까요?</p>
+<p><strong>Counting Sort</strong>가 어떻게 작동하는지 이해하고 나면 위 의문에 대한 답을 스스로 할 수 있을 겁니다! </p>
+
+</div><div id="wmd-preview-section-14607" class="wmd-preview-section preview-content">
+
+<h2 id="정렬-과정">정렬 과정</h2>
+
+<p>다음과 같은 <em>수열 A</em>를 정렬 해야하는 상황을 생각해봅시다. </p>
+
+</div><div id="wmd-preview-section-14608" class="wmd-preview-section preview-content">
+
+<p></p><div class="" rel="f9d688473a7baaf61e4324c3c6321cf1"><div class="MathJax_SVG_Display" role="textbox" aria-readonly="true" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-93-Frame" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="286" height="16" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2656634B56E7555108" style="margin-top:0;margin-bottom:0;"></span></span></div></div><p></p>
+<p>위 수열을 정렬하면 아래와 같은 <em>수열 B</em>를 얻습니다.</p>
+
+</div><div id="wmd-preview-section-14609" class="wmd-preview-section preview-content">
+
+<p></p><div class="" rel="bb87af12002349dd7e4c17c60fe211a5"><div class="MathJax_SVG_Display" role="textbox" aria-readonly="true" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-94-Frame" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="286" height="16" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2220E94156E7555111" style="margin-top:0;margin-bottom:0;"></span></span></div></div><p></p>
+<p><code>Counting Sort</code>가 어떻게 <em>수열 A</em>를 정렬해서 <em>수열 B</em>를 얻는지 따라가 봅시다.</p>
+
+<ol start="1"><li rel="1">첫번째로 각 숫자가 몇번 등장하는지 세어줍니다.</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+  <th align="left">숫자</th>
+  <th align="center">0</th>
+  <th align="center">1</th>
+  <th align="center">2</th>
+  <th align="center">3</th>
+  <th align="center">4</th>
+  <th align="center">5</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">등장 횟수</td>
+  <td align="center">3</td>
+  <td align="center">2</td>
+  <td align="center">2</td>
+  <td align="center">3</td>
+  <td align="center">3</td>
+  <td align="center">3</td>
+</tr>
+</tbody></table>
+
+
+<blockquote>
+  <p>벌써 <strong>Counting Sort</strong>의 이름에 왜 <strong>Counting</strong>이 들어가있는지 알것 같지 않나요? 이렇게 각 숫자가 몇번 등장했는지 세어주기 때문입니다. </p>
+  
+  <p>cf) 이 예제만 보면 1번 과정만 하고 벌써 정렬을 다 한 것 같습니다. 각 숫자가 등장한 횟수만큼 작은 순서대로 찍어주면 되기 때문이죠. 그럼 왜 굳이 아래 과정을 할까요? </p>
+  
+  <p><span class="" rel="e69805b232005254847023b82a2d6d77"><span class="MathJax_SVG" id="MathJax-Element-95-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="110" height="16" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2344644356E7555117" style="margin-top:0;margin-bottom:0;"></span></span></span> 같은 수열을 정렬하는 상황을 생각해보세요. 중간에 등장한 뜬금없이 큰 100이 있어서 3~99까지 무의미한 순회를 해야하죠. 따라서 방금 생각한 방법은 <code>숫자 크기</code>에 시간복잡도가 매우 큰 영향을 받으므로 <code>비효율적</code>이라는 것을 알 수 있습니다.</p>
+</blockquote>
+
+<ol start="2"><li rel="2">등장 횟수를 누적합으로 바꿔줍니다.</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+  <th align="left">숫자</th>
+  <th align="center">0</th>
+  <th align="center">1</th>
+  <th align="center">2</th>
+  <th align="center">3</th>
+  <th align="center">4</th>
+  <th align="center">5</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td align="left">누적 합</td>
+  <td align="center">3 (3)</td>
+  <td align="center">5 (3+2)</td>
+  <td align="center">7 (3+2+2)</td>
+  <td align="center">10 (3+2+2+3)</td>
+  <td align="center">13 (3+2+2+3+3)</td>
+  <td align="center">16 (3+2+2+3+3+3)</td>
+</tr>
+</tbody></table>
+
+
+<blockquote>
+  <p>이 누적합에서 알 수 있는 것은 숫자 0은 1 ~ 3인덱스에 위치하고 숫자 2는 4 ~ 7 인덱스에 위치한다는 것입니다.</p>
+</blockquote>
+
+<ol start="3"><li rel="3"><code>정렬할 배열 A</code>를 뒤에서 앞으로 순회 하면서 <code>정렬된 배열 B</code> 에 넣어줍니다. 2번 과정에서 구한 누적합이 배열 A의 숫자가 배열 B의 어디에 위치해야 할지 정확하게 알려줍니다. 아래 5장의 이미지는 3번의 진행 과정을 설명합니다.</li>
+</ol>
+
+<hr>
+
+<p style="text-align: center; clear: none; float: none;"><span style="text-align: start;"><br></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:650px;width: 650px; height: 532px;;height:auto;max-width:100%"><span data-url="https://t1.daumcdn.net/cfile/tistory/22538A4D56D2FFBA2E?original" data-lightbox="lightbox"><img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/22538A4D56D2FFBA2E" style="cursor: pointer;max-width:100%;height:auto" width="650" height="532" filename="1.png" filemime="image/jpeg"></span></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:650px;width: 650px; height: 514px;;height:auto;max-width:100%"><span data-url="https://t1.daumcdn.net/cfile/tistory/234A764D56D2FFBF38?original" data-lightbox="lightbox"><img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/234A764D56D2FFBF38" style="cursor: pointer;max-width:100%;height:auto" width="650" height="514" filename="2.png" filemime="image/jpeg"></span></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:650px;width: 650px; height: 525px;;height:auto;max-width:100%"><span data-url="https://t1.daumcdn.net/cfile/tistory/27686D4D56D2FFC117?original" data-lightbox="lightbox"><img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/27686D4D56D2FFC117" style="cursor: pointer;max-width:100%;height:auto" width="650" height="525" filename="3.png" filemime="image/jpeg"></span></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:650px;width: 650px; height: 529px;;height:auto;max-width:100%"><span data-url="https://t1.daumcdn.net/cfile/tistory/225C7D4D56D2FFC223?original" data-lightbox="lightbox"><img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/225C7D4D56D2FFC223" style="cursor: pointer;max-width:100%;height:auto" width="650" height="529" filename="4.png" filemime="image/jpeg"></span></span></p>
+<p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:650px;width: 650px; height: 538px;;height:auto;max-width:100%"><span data-url="https://t1.daumcdn.net/cfile/tistory/23057D4956D2FFE314?original" data-lightbox="lightbox"><img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/23057D4956D2FFE314" style="cursor: pointer;max-width:100%;height:auto" width="650" height="538" filename="5.png" filemime="image/jpeg"></span></span></p>
+<p></p><div><hr></div><p></p></div><div id="wmd-preview-section-14610" class="wmd-preview-section preview-content">
+
+<h2 id="애니메이션-예시"><br></h2><h2 id="애니메이션-예시">애니메이션 예시</h2>
+
+<p>예시 전체를 그림을 만드는건 힘들어서.. 누군가 멋지게 만들어주신 Counting Sort 애니메이션 링크를 첨부합니다. 아래 링크에서 Counting Sort 알고리즘 진행 과정 전체 예시를 볼 수 있습니다. <br>
+<a href="http://www.cs.miami.edu/home/burt/learning/Csc517.091/workbook/countingsort.html" target="_blank">http://www.cs.miami.edu/home/burt/learning/Csc517.091/workbook/countingsort.html</a></p>
+
+</div><div id="wmd-preview-section-14611" class="wmd-preview-section preview-content">
+
+<h2 id="구현">구현</h2>
+
+<p>원래 배열을 A, 정렬된 배열을 B, 각 숫자가 몇개인지 세어준 배열을 count, 숫자 개수의 누적합을 담은 배열을 countSum이라 이름지었습니다.</p><p><br></p><p><script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/bff3e58efedd7809d755.js"></script><link rel="stylesheet" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/gist-embed-2c768148c4d27cab10fe818942078e18.css"></p><div id="gist31976042" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-counting_sort-cpp" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-c ">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-counting_sort-cpp-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-counting_sort-cpp-LC1" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cstdio<span class="pl-pds">&gt;</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-counting_sort-cpp-LC2" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-counting_sort-cpp-LC3" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">define</span> <span class="pl-en">MAX_SIZE</span> <span class="pl-c1">1000</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-counting_sort-cpp-LC4" class="blob-code blob-code-inner js-file-line">#<span class="pl-k">define</span> <span class="pl-en">MAX_NUM</span> <span class="pl-c1">10000</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-counting_sort-cpp-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-counting_sort-cpp-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-k">int</span> <span class="pl-en">main</span>(){</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-counting_sort-cpp-LC7" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">int</span> N, A[MAX_SIZE+<span class="pl-c1">1</span>], B[MAX_SIZE+<span class="pl-c1">1</span>], count[MAX_NUM+<span class="pl-c1">1</span>], countSum[MAX_NUM+<span class="pl-c1">1</span>];</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-counting_sort-cpp-LC8" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-counting_sort-cpp-LC9" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">//</span>수열의 길이 N은 MAX_SIZE이하여야합니다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-counting_sort-cpp-LC10" class="blob-code blob-code-inner js-file-line">    <span class="pl-c1">scanf</span>(<span class="pl-s"><span class="pl-pds">"</span>%d<span class="pl-pds">"</span></span>, &amp;N);</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-counting_sort-cpp-LC11" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-counting_sort-cpp-LC12" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">//</span>count배열을 모두 0으로 초기화</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-counting_sort-cpp-LC13" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> i = <span class="pl-c1">0</span>; i&lt;= N ; i++)</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-counting_sort-cpp-LC14" class="blob-code blob-code-inner js-file-line">        count[i] = <span class="pl-c1">0</span>;</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-counting_sort-cpp-LC15" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-counting_sort-cpp-LC16" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">//</span>수열 A에 입력되는 수는 MAX_NUM 이하여야합니다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-counting_sort-cpp-LC17" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> i =<span class="pl-c1">1</span> ; i&lt;= N ; i++){</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-counting_sort-cpp-LC18" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">scanf</span>(<span class="pl-s"><span class="pl-pds">"</span>%d<span class="pl-pds">"</span></span>, &amp;A[i]);</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-counting_sort-cpp-LC19" class="blob-code blob-code-inner js-file-line">        </td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-counting_sort-cpp-LC20" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">//</span>숫자 등장 횟수 세기</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-counting_sort-cpp-LC21" class="blob-code blob-code-inner js-file-line">        count[A[i]]++;</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-counting_sort-cpp-LC22" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-counting_sort-cpp-LC23" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-counting_sort-cpp-LC24" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">//</span>누적합 구성</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-counting_sort-cpp-LC25" class="blob-code blob-code-inner js-file-line">    countSum[<span class="pl-c1">0</span>] = count[<span class="pl-c1">0</span>];</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-counting_sort-cpp-LC26" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> i = <span class="pl-c1">1</span> ; i&lt;= MAX_NUM ; i++)</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-counting_sort-cpp-LC27" class="blob-code blob-code-inner js-file-line">        countSum[i] = countSum[i-<span class="pl-c1">1</span>]+count[i];</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-counting_sort-cpp-LC28" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-counting_sort-cpp-LC29" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">//</span>뒤에서 부터 수열 A 순회한다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-counting_sort-cpp-LC30" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> i = N ; i &gt;= <span class="pl-c1">1</span>; i--){</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-counting_sort-cpp-LC31" class="blob-code blob-code-inner js-file-line">        B[countSum[A[i]]] = A[i];</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-counting_sort-cpp-LC32" class="blob-code blob-code-inner js-file-line">        countSum[A[i]]--;</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-counting_sort-cpp-LC33" class="blob-code blob-code-inner js-file-line">    }</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-counting_sort-cpp-LC34" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-counting_sort-cpp-LC35" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">//</span>수열 A를 정렬한 결과인 수열 B를 출력한다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-counting_sort-cpp-LC36" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">for</span>(<span class="pl-k">int</span> i =<span class="pl-c1">1</span> ; i&lt;= N ; i++)</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-counting_sort-cpp-LC37" class="blob-code blob-code-inner js-file-line">        <span class="pl-c1">printf</span>(<span class="pl-s"><span class="pl-pds">"</span>%d <span class="pl-pds">"</span></span>, B[i]);</td>
+      </tr>
+      <tr>
+        <td id="file-counting_sort-cpp-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-counting_sort-cpp-LC38" class="blob-code blob-code-inner js-file-line">}</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/bowbowbow/bff3e58efedd7809d755/raw/528367e3cc7910d4e6c37f6af3fe9cc02b1ac224/counting_sort.cpp" style="float:right">view raw</a>
+        <a href="https://gist.github.com/bowbowbow/bff3e58efedd7809d755#file-counting_sort-cpp">counting_sort.cpp</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<p></p><p>아래 코드는 파이썬 버전입니다.</p><p><script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/7fcf49f8f765d74a230e34701d557de7.js"></script><link rel="stylesheet" href="./Counting Sort _ 계수 정렬 - 멍멍멍_files/gist-embed-2c768148c4d27cab10fe818942078e18.css"></p><div id="gist36438069" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-conting_sort-py" class="file">
+    
+
+  <div itemprop="text" class="blob-wrapper data type-python ">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-conting_sort-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-conting_sort-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>-*- coding: utf-8 -*- </span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-conting_sort-py-LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>한글 주석을 위해 인코딩 형식 utf-8을 선언함</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-conting_sort-py-LC3" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-conting_sort-py-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>counting sort python3 version</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-conting_sort-py-LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>python3 문법으로 작성되었습니다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-conting_sort-py-LC6" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-conting_sort-py-LC7" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>입력 예시 : 1 3 17 5 7</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-conting_sort-py-LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>출력 예시 : 1 3 5 7 17</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-conting_sort-py-LC9" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-conting_sort-py-LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>입력될 수 있는 숫자의 최대 크기를 의미합니다. </span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-conting_sort-py-LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">MAX_NUM</span> <span class="pl-k">=</span> <span class="pl-c1">1000</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-conting_sort-py-LC12" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-conting_sort-py-LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>A는 입력된 숫자를 저장하는 배열</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-conting_sort-py-LC14" class="blob-code blob-code-inner js-file-line">A <span class="pl-k">=</span> <span class="pl-c1">list</span>(<span class="pl-c1">map</span>(<span class="pl-c1">int</span>, <span class="pl-c1">input</span>().split()))</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-conting_sort-py-LC15" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-conting_sort-py-LC16" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>N은 입력된 숫자의 개수 입니다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-conting_sort-py-LC17" class="blob-code blob-code-inner js-file-line">N <span class="pl-k">=</span> <span class="pl-c1">len</span>(A)</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-conting_sort-py-LC18" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-conting_sort-py-LC19" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>0으로 초기화된 입력될 MAX_NUM+1 길이의 배열 count를 생성합니다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-conting_sort-py-LC20" class="blob-code blob-code-inner js-file-line">count <span class="pl-k">=</span>[<span class="pl-c1">0</span>]<span class="pl-k">*</span>(<span class="pl-c1">MAX_NUM</span><span class="pl-k">+</span><span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-conting_sort-py-LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>countSum은 누적합을 저장하는 배열입니다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-conting_sort-py-LC22" class="blob-code blob-code-inner js-file-line">countSum <span class="pl-k">=</span>[<span class="pl-c1">0</span>]<span class="pl-k">*</span>(<span class="pl-c1">MAX_NUM</span><span class="pl-k">+</span><span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-conting_sort-py-LC23" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-conting_sort-py-LC24" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>숫자 등장 횟수 세기</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-conting_sort-py-LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">0</span>, N):</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-conting_sort-py-LC26" class="blob-code blob-code-inner js-file-line">	count[A[i]] <span class="pl-k">+=</span> <span class="pl-c1">1</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-conting_sort-py-LC27" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-conting_sort-py-LC28" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>숫자 등장 횟수 누적합 구하기</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-conting_sort-py-LC29" class="blob-code blob-code-inner js-file-line">countSum[<span class="pl-c1">0</span>] <span class="pl-k">=</span> count[<span class="pl-c1">0</span>]</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-conting_sort-py-LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">1</span>, <span class="pl-c1">MAX_NUM</span><span class="pl-k">+</span><span class="pl-c1">1</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-conting_sort-py-LC31" class="blob-code blob-code-inner js-file-line">	countSum[i] <span class="pl-k">=</span> countSum[i<span class="pl-k">-</span><span class="pl-c1">1</span>]<span class="pl-k">+</span>count[i]<span class="pl-bu">;</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-conting_sort-py-LC32" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="file-conting_sort-py-LC33" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>B는 정렬된 결과를 저장하는 배열</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="file-conting_sort-py-LC34" class="blob-code blob-code-inner js-file-line">B <span class="pl-k">=</span> [<span class="pl-c1">0</span>]<span class="pl-k">*</span>(N<span class="pl-k">+</span><span class="pl-c1">1</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="file-conting_sort-py-LC35" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="file-conting_sort-py-LC36" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(N<span class="pl-k">-</span><span class="pl-c1">1</span>, <span class="pl-k">-</span><span class="pl-c1">1</span>, <span class="pl-k">-</span><span class="pl-c1">1</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="file-conting_sort-py-LC37" class="blob-code blob-code-inner js-file-line">	B[countSum[A[i]]] <span class="pl-k">=</span> A[i]</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="file-conting_sort-py-LC38" class="blob-code blob-code-inner js-file-line">	countSum[A[i]] <span class="pl-k">-=</span> <span class="pl-c1">1</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="file-conting_sort-py-LC39" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="file-conting_sort-py-LC40" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span>수열 A를 정렬한 결과인 수열 B를 출력한다.</span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="file-conting_sort-py-LC41" class="blob-code blob-code-inner js-file-line">result <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="file-conting_sort-py-LC42" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">range</span>(<span class="pl-c1">1</span>, N<span class="pl-k">+</span><span class="pl-c1">1</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L43" class="blob-num js-line-number" data-line-number="43"></td>
+        <td id="file-conting_sort-py-LC43" class="blob-code blob-code-inner js-file-line">	result <span class="pl-k">+=</span> <span class="pl-c1">str</span>(B[i]) <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span></td>
+      </tr>
+      <tr>
+        <td id="file-conting_sort-py-L44" class="blob-num js-line-number" data-line-number="44"></td>
+        <td id="file-conting_sort-py-LC44" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">print</span>(result)</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/bowbowbow/7fcf49f8f765d74a230e34701d557de7/raw/d1ad24c6c69548af64064f4a4b4593ffd9d7c3ee/conting_sort.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/bowbowbow/7fcf49f8f765d74a230e34701d557de7#file-conting_sort-py">conting_sort.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<p></p><p><br></p>
+
+</div><div id="wmd-preview-section-14756" class="wmd-preview-section preview-content">
+
+<h2 id="정리">정리</h2>
+
+<p>알고리즘의 진행과정을 따라가보면서 처음 소개에서 했던 의문들에 대한 답을 얻을 수 있었을 겁니다. </p>
+<p><code>Counting Sort</code> 알고리즘의 시간복잡도는 O(n) 으로 <code>Quick Sort</code>보다 훨씬 유리해보입니다. 그러나 <code>세상에 공짜는 없다</code>는 말처럼 <code>Counting Sort</code>는 대부분의 상황에서 엄청난  <code>메모리 낭비</code>를 야기할 수 있습니다. </p>
+<p>누적합 배열에 대한 접근을 O(1)에 달성하기 위해 정렬할 배열에 포함된 숫자의 최댓값 만큼의 메모리를 필요로 합니다. 아까 추가로 예시든 <span xmlns="http://www.w3.org/1999/xhtml" class="" rel="e69805b232005254847023b82a2d6d77"><span class="MathJax_SVG" id="MathJax-Element-96-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="111" height="16" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2626824156E755510D" style="margin-top:0;margin-bottom:0;"></span></span></span> 배열에 Counting Sort 알고리즘으로 정렬하기 위해서는 누적합 배열의 길이를 100으로 잡는 낭비를 해야합니다. 만약 배열에 최댓값으로 10억이 포함되어 있다면 엄청난 낭비가 되겠죠. </p>
+<p>따라서 <code>Counting Sort</code>는 위에서든 예시처럼  <br>
+</p><div xmlns="http://www.w3.org/1999/xhtml" class="" rel="91fb6c54c0c456bc59a99dedbf404da4"><div class="MathJax_SVG_Display" role="textbox" aria-readonly="true" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-97-Frame" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="259" height="16" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2554D94E56E7555107" style="margin-top:0;margin-bottom:0;"></span></span></div></div>
+정렬하는 숫자가 <code>특정한 범위</code>(위 예시 : 0~5) 안에 있을 때 사용하게 됩니다.<p></p>
+<p><code>Counting Sort</code>를 대표적으로 활용하는 사례는 <code>26개의 알파벳</code>으로 이루어진 문자열에서 <code>Suffix Array</code>를 얻는 경우인데 이때 Counting Sort를 사용하기 때문에 일반적인 Sort를 사용해서 Suffix Array를 얻때 시간복잡도 <span xmlns="http://www.w3.org/1999/xhtml" class="" rel="d18799f0acfd871a5d29453a9111ca25"><span class="MathJax_SVG" id="MathJax-Element-100-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="75" height="20" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/2616844456E7555111" style="margin-top:0;margin-bottom:0;"></span></span></span>보다 빠른 <span xmlns="http://www.w3.org/1999/xhtml" class="" rel="743c00b1fa7d59c887892656948b54b8"><span class="MathJax_SVG" id="MathJax-Element-98-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><span><img type="image/png" width="67" height="17" longdesc="__SVG__undefined" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/211A5E4456E755510E" style="margin-top:0;margin-bottom:0;"></span></span></span>에 Suffix Array를 얻는 것이 가능합니다. </p>
+
+</div><div id="wmd-preview-section-14767" class="wmd-preview-section preview-content">
+
+<h2 id="끝">끝</h2>
+
+<blockquote>
+  <p>글에 오류나 <code>Counting Sort</code>에 대한 질문이 있으면 댓글로 남겨주세요!</p>
+</blockquote></div><div id="wmd-preview-section-footnotes" class="preview-content"></div></div><p><br></p><div class="container_postbtn"><div class="postbtn_like"><div class="like_btn" data-uoc-svc="tistory" data-uoc-uid="1940220_8" data-uoc-sc="404" data-uoc-pcurl="http://bowbowbow.tistory.com/8" data-uoc-fetchurl="http://api.kakao.tistory.com/like/fetch?uid=1940220_8"><label class="uoc-icon"><span class="ico_postbtn ico_like"></span> <span class="txt_like uoc-text screen_out">공감</span><span class="txt_like uoc-count">23</span><input type="button" class="inp_btn uoc-button"></label></div><span class="ico_bar"></span><label data-thumbnail-url="https://t1.daumcdn.net/cfile/tistory/22538A4D56D2FFBA2E" data-title="Counting Sort : 계수 정렬" data-description="Counting Sort  Counting Sort Counting Sort 소개 정렬 과정 애니메이션 예시 구현 정리 끝 소개 Counting Sort 는 정렬 알고리즘으로 의 시간복잡도를 갖습니다. 반면 일반적 상황에서 가장 빠른 정렬 알고리즘.." data-profile-image="https://t1.daumcdn.net/cfile/tistory/2119864C56E1268121" data-profile-name="yswon" data-pc-url="http://bowbowbow.tistory.com/8" data-blog-title="멍멍멍"><span class="ico_postbtn ico_sns">sns</span><input type="button" class="inp_btn"></label><span class="ico_bar"></span><label data-entry-id="8"><span class="ico_postbtn ico_report">신고</span><input type="button" class="inp_btn"></label></div><div class="postbtn_ccl" data-ccl-type="3"><a href="http://creativecommons.org/licenses/by/4.0/deed.ko" target="_blank" class="link_ccl"><span class="bundle_ccl"><span class="ico_postbtn ico_ccl1">저작자표시</span></span></a></div></div>    <!--
+	<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-fr/2.0/kr/" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-fr/">
+			<permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+			<permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+			<requires rdf:resource="http://web.resource.org/cc/Notice"/>
+			<requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+			<permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+		</License>
+	</rdf:RDF>
+	--><div style="text-align:left; padding-top:10px;clear:both">
+<iframe src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/like.html" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:106px; height:30px;" allowtransparency="true"></iframe>
+</div>
+</div>
+								</div>
+								<div class="area_etc">
+									<strong class="screen_out">공유하기 링크</strong>
+									<ul class="list_share">
+										<li><a href="http://bowbowbow.tistory.com/8#none" class="ico_skin link_fb" data-service="facebook">페이스북</a></li>
+										<li><a href="http://bowbowbow.tistory.com/8#none" class="ico_skin link_ks" data-service="kakaostory">카카오스토리</a></li>
+										<li><a href="http://bowbowbow.tistory.com/8#none" class="ico_skin link_tw" data-service="twitter">트위터</a></li>
+									</ul>
+
+									
+										<dl class="list_tag">
+											<dt class="tit_tag">TAG</dt>
+											<dd class="desc_tag"><a href="http://bowbowbow.tistory.com/tag/counting%20sort" rel="tag">counting sort</a>,
+<a href="http://bowbowbow.tistory.com/tag/sort" rel="tag">sort</a>,
+<a href="http://bowbowbow.tistory.com/tag/suffix%20array" rel="tag">suffix array</a></dd>
+										</dl>
+									
+								</div>
+
+
+								<div class="area_reply ">
+
+
+									<strong class="tit_reply">댓글
+										<button type="button" class="btn_reply on" onclick="$.Area.Comment.changeStatus();toggleLayerForEntry(&#39;8&#39;, &#39;comment&#39;); return false">
+											<span id="commentCount8">15</span>
+											<span class="ico_skin ico_reply">댓글펼치기</span>
+										</button>
+									</strong>
+
+
+
+									<!-- 대체텍스트 댓글펼치기/댓글접기 변경 -->
+									<div id="entry8Comment" style="display:block">
+										<button type="button" class="btn_replymore">이전 댓글 보기</button>
+										
+											<ul class="list_reply">
+												
+													<li id="comment5074851" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">혀지 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">넘 멋짐다</span>
+															<span class="txt_date">2016.03.02 15:39 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5074851" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5074851" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5074851);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5074851); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5082363" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">혀지 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">넘멋짐다<br>
+</span>
+															<span class="txt_date">2016.03.22 11:34 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5082363" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5082363" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5082363);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5082363); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5100798" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">현 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">카운팅 소트를 이해하는데 큰 도움이 됬습니다! 감사합니다! </span>
+															<span class="txt_date">2016.05.14 14:17 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5100798" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5100798" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5100798);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5100798); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5107025" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">진 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">혹시 이 과정을 python 코드로 해주실 수 있나요?</span>
+															<span class="txt_date">2016.05.30 22:56 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5107025" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5107025" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5107025);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5107025); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+														
+															<li id="comment5108807" class="re_reply rp_admin">
+
+																<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+																<span class="reply_content">
+																	<span class="tit_nickname"><a href="http://bowbowbow.tistory.com/" onclick="return openLinkInNewWindow(this)">bowbowbow yswon</a><span class="tistoryProfileLayerTrigger" onclick="TistoryProfile.show(event, this, {&quot;title&quot;:&quot;\uba4d\uba4d\uba4d&quot;,&quot;url&quot;:&quot;https:\/\/bowbowbow.tistory.com&quot;,&quot;nickname&quot;:&quot;yswon&quot;,&quot;items&quot;:[]}); return false;"></span> <span class="ico_skin ico_secret"></span></span>
+																	<span class="txt_reply">python3으로 작성한 코드도 본문에 추가했습니다 :)</span>
+																	<span class="txt_date">2016.06.04 04:25 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5108807" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+																</span>
+																<button type="button" class="btn_replymenu">
+																	<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+																</button>
+																<div class="my_edit">
+																	<a href="http://bowbowbow.tistory.com/8#comment5108807" class="link_edit">댓글주소</a>
+																	<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5108807); return false;" class="link_edit">수정/삭제</a>
+																</div>
+															</li>
+														
+													
+												
+													<li id="comment5144669" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">성 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">누적합을 구하는이유가 값들의 범위가 넓을때가 있기때문에 구하는거라고 하셨는데 누적합을 구할때도 2 ~ 100까지 순회해야하지 않나요??</span>
+															<span class="txt_date">2016.08.17 14:34 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5144669" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5144669" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5144669);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5144669); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5152065" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">김뱀부 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">이해가 너무 잘되네요 : )<br>
+감사합니다 !</span>
+															<span class="txt_date">2016.09.06 16:18 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5152065" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5152065" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5152065);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5152065); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5165560" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">제로조 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">카운팅 소트의 복잡도는 O(n)이 아니라 O(n + k)라서 k 값에 따라 O(n!)이 될 수도 있습니다.<br>
+https://www.zerocho.com/category/Algorithm/post/58006da88475ed00152d6c4b<br>
+</span>
+															<span class="txt_date">2016.10.14 15:10 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5165560" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5165560" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5165560);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5165560); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5208400" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">지나가는행인 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">일반적인 소트로 SA 구할때 n^2lgn 이아니라 nlg^2n 아닌가요?</span>
+															<span class="txt_date">2017.02.22 11:35 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5208400" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5208400" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5208400);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5208400); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5211635" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">이준하 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">누적합 카운팅 솔트가 왜 그냥 카운팅솔트보다 더 효율적인가요??<br>
+본문이 이해가 되지 않네요ㅜㅠ</span>
+															<span class="txt_date">2017.03.01 17:51 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5211635" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5211635" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5211635);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5211635); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+														
+															<li id="comment5286747" class="re_reply rp_general">
+
+																<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+																<span class="reply_content">
+																	<span class="tit_nickname">멍멍이 <span class="ico_skin ico_secret"></span></span>
+																	<span class="txt_reply">누적합 counting sort 는 counting sort 보다 효율적이라기 보다는, counting sort 를 stable 하게 만들어주기 위한 것입니다. counting sort 에서 stable의 의미는 정렬되기 전 동일한 값을 가지는 원소들의 순서가 정렬된 후에도 유지되도록 하는것입니다. stable 한 속성은 counting sort 를 반복적으로 사용하는 radix sort 에서 사용됩니다. radix sort 시 LSB 순서로 정렬할 경우 이전에 정렬한 값을 다음 정렬시에도 반영하여 정렬할 수 있게끔 하기위해 stable 속성이 꼭 필요합니다. <br>
+</span>
+																	<span class="txt_date">2017.10.10 13:40 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5286747" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+																</span>
+																<button type="button" class="btn_replymenu">
+																	<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+																</button>
+																<div class="my_edit">
+																	<a href="http://bowbowbow.tistory.com/8#comment5286747" class="link_edit">댓글주소</a>
+																	<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5286747); return false;" class="link_edit">수정/삭제</a>
+																</div>
+															</li>
+														
+													
+												
+													<li id="comment5251509" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">채민균 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">블로그에 너무 좋은글이 많네요!!!ㅎㅎ 오류정정 하고자 댓글 달아요~! quick sort 의  최악의 경우 알고리즘의 시간 복잡도는 O(n^2) 입니다! 대부분의 경우 nlogn에 풀리긴 합니다만 최악 조건으로 따져봤을때는 n^2 이 맞습니다 ㅎ</span>
+															<span class="txt_date">2017.06.21 16:06 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5251509" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5251509" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5251509);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5251509); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5296454" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">GY <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">한번에 이해하고 갑니다 좋은 글 감사해요 ^^</span>
+															<span class="txt_date">2017.11.14 08:23 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5296454" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5296454" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5296454);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5296454); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5307227" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">기모지 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">감사합니다 리얼 천재아님 수재시네요</span>
+															<span class="txt_date">2017.12.13 13:57 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5307227" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5307227" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5307227);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5307227); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+													<li id="comment5342763" class="rp_general">
+
+														<img src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/avatar_default.gif" width="50" height="50" class="img_profile" alt="프로필사진">
+
+														<span class="reply_content">
+															<span class="tit_nickname">빈이 <span class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">30번째 줄에서 왜 수열A를 뒤에서부터 순회해야하나요? 책에도 그렇게 나와있어서 궁금하네요ㅜㅜ</span>
+															<span class="txt_date">2018.04.01 20:44 <a href="http://bowbowbow.tistory.com/toolbar/popup/abuseReport/?entryId=8&amp;commentId=5342763" onclick="window.open(this.href, &#39;tistoryThisBlogPopup&#39;, &#39;width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no&#39;); return false;">신고</a></span>
+														</span>
+														<button type="button" class="btn_replymenu">
+															<span class="ico_skin ico_replymenu">댓글 메뉴</span>
+														</button>
+														<div class="my_edit">
+															<a href="http://bowbowbow.tistory.com/8#comment5342763" class="link_edit">댓글주소</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="deleteComment(5342763);return false" class="link_edit">수정/삭제</a>
+															<a href="http://bowbowbow.tistory.com/8#" onclick="commentRequireLoginByDormancy(); return false;commentComment(5342763); return false" class="link_edit">댓글쓰기</a>
+														</div>
+													</li>
+
+													
+												
+											</ul>
+										
+
+										<form method="post" action="http://bowbowbow.tistory.com/comment/add/8" onsubmit="return false" style="margin: 0">
+											<fieldset class="fld_reply">
+												<legend class="screen_out">댓글쓰기 폼</legend>
+												<div class="reply_write ">
+													<label for="comment" class="lab_write"></label>
+													<textarea id="comment" name="comment" class="tf_reply" placeholder="여러분의 소중한 댓글을 입력해주세요" tabindex="1"></textarea>
+												</div>
+												<div class="reply_writer">
+													
+														
+															<div class="writer_info">
+																<span class="info_name ">
+																	<span class="wrap_info">
+																		<input type="text" name="name" id="name" class="inp_info" placeholder="이름" value="" tabindex="2">
+																	</span>
+																</span>
+																<span class="info_pw ">
+																	<span class="wrap_info">
+																		<input type="password" name="password" id="password" class="inp_info" placeholder="비밀번호" tabindex="3">
+																	</span>
+																</span>
+															</div>
+														
+														<div class="writer_check">
+															<span class="check_secret ">
+																<input type="checkbox" name="secret" id="secret" class="inp_secret" tabindex="4">
+																<label for="secret" class="lab_secret">
+																	<span class="ico_skin ico_check"></span>비밀글
+																</label>
+															</span>
+
+														</div>
+
+													
+
+													<div class="writer_btn">
+														<button type="submit" class="btn_enter" onclick="addComment(this, 8); return false;" tabindex="5">입력</button>
+													</div>
+												</div>
+											</fieldset>
+										</form>
+
+									</div><script type="text/javascript">loadedComments[8]=true;findFragmentAndHighlight(8)</script>
+								</div>
+							</div>
+						
+					</div>
+				
+
+				
+
+				
+
+
+				
+					<div class="area_paging area_paging_list">
+						<span class="inner_paging">
+							<a href="http://bowbowbow.tistory.com/9" class="ico_skin link_prev ">이전</a>
+							
+								<a href="http://bowbowbow.tistory.com/26" class="link_page"><span>1</span></a>
+							
+								<a class="link_page"><span>···</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/13" class="link_page"><span>14</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/12" class="link_page"><span>15</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/10" class="link_page"><span>16</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/9" class="link_page"><span>17</span></a>
+							
+								<a class="link_page"><span class="selected">18</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/7" class="link_page"><span>19</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/6" class="link_page"><span>20</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/5" class="link_page"><span>21</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/4" class="link_page"><span>22</span></a>
+							
+								<a class="link_page"><span>···</span></a>
+							
+								<a href="http://bowbowbow.tistory.com/1" class="link_page"><span>25</span></a>
+							
+							<a href="http://bowbowbow.tistory.com/7" class="ico_skin link_next ">다음</a>
+						</span>
+					</div>
+
+					<div class="area_paging area_paging_simple">
+						<div class="inner_paging">
+							<a href="http://bowbowbow.tistory.com/9" class="link_prev ">
+								<span class="ico_skin ico_prev"></span>이전
+							</a>
+
+							<a href="http://bowbowbow.tistory.com/7" class="link_next ">
+								다음<span class="ico_skin ico_next"></span>
+							</a>
+						</div>
+					</div>
+				
+
+
+				<div id="mEtc" class="wrap_etc">
+					<div class="inner_aside">
+						
+							<!-- 공지사항 
+								
+									<div class="box_aside">
+										<strong>공지사항</strong>
+										<ul class="list_board">
+											
+										</ul>
+									</div>
+								
+							-->
+							
+							<!-- 태그 클라우드 -->
+								<div class="box_aside">
+									<strong>TAG</strong>
+									<ul class="list_tag">
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EA%B3%84%EC%82%B0%20%EA%B8%B0%ED%95%98" class="link_tag cloud5">계산 기하</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EB%8B%A4%EA%B0%81%ED%98%95" class="link_tag cloud5">다각형</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EC%84%A0%EB%B6%84" class="link_tag cloud5">선분</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EC%99%B8%EC%A0%81" class="link_tag cloud5">외적</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/disjoint%20set" class="link_tag cloud5">disjoint set</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/Primitive-Composition-Abstraction" class="link_tag cloud5">Primitive-Composition-Abstraction</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EC%BD%94%EB%93%9C%ED%8F%AC%EC%8A%A4" class="link_tag cloud5">코드포스</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EC%83%81%ED%98%B8%20%EB%B0%B0%ED%83%80%EC%A0%81%20%EC%A7%91%ED%95%A9" class="link_tag cloud5">상호 배타적 집합</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EB%AA%85%EC%A0%9C" class="link_tag cloud5">명제</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EA%B1%B0%ED%92%88%20%EC%A0%95%EB%A0%AC" class="link_tag cloud5">거품 정렬</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/counting%20sort" class="link_tag cloud5">counting sort</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/codeforces" class="link_tag cloud5">codeforces</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EA%B2%BD%EB%A1%9C%20%EC%95%95%EC%B6%95" class="link_tag cloud5">경로 압축</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/ALU" class="link_tag cloud5">ALU</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EB%94%94%EC%A7%80%ED%84%B8%20%EB%85%BC%EB%A6%AC%20%EC%84%A4%EA%B3%84" class="link_tag cloud5">디지털 논리 설계</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/suffix%20array" class="link_tag cloud5">suffix array</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/Square%20Root%20of%20Permutation" class="link_tag cloud5">Square Root of Permutation</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/The%20Laws%20of%20Thought" class="link_tag cloud5">The Laws of Thought</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EA%B8%B0%ED%95%98" class="link_tag cloud1">기하</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/suffix" class="link_tag cloud5">suffix</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/sort" class="link_tag cloud1">sort</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/path%20compression" class="link_tag cloud5">path compression</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/Full%20Adder" class="link_tag cloud5">Full Adder</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EC%A1%B0%EC%A7%80%20%EB%B6%88" class="link_tag cloud5">조지 불</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/bubble%20sort" class="link_tag cloud5">bubble sort</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/union%20find" class="link_tag cloud5">union find</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EC%82%BC%EC%84%B1%20%EB%8C%80%ED%95%99%EC%83%9D%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EB%8C%80%ED%9A%8C" class="link_tag cloud5">삼성 대학생 프로그래밍 대회</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EA%B5%90%EC%B0%A8%20%EC%A0%90" class="link_tag cloud5">교차 점</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EB%B3%B5%EC%9E%A1%EB%8F%84" class="link_tag cloud5">복잡도</a></li>
+										
+											<li><a href="http://bowbowbow.tistory.com/tag/%EC%A0%91%EB%91%90%EC%82%AC" class="link_tag cloud5">접두사</a></li>
+										
+									</ul>
+									<a href="http://bowbowbow.tistory.com/tag" class="link_more">more</a>
+								</div>
+							
+							<!-- 최근에 올라온 글 -->
+							<div class="box_aside">
+								<strong>최근에 올라온 글</strong>
+								<ul class="list_board">
+									
+										<li><a href="http://bowbowbow.tistory.com/26" class="link_board">[자료구조]Union-F..</a></li>
+									
+
+										<li><a href="http://bowbowbow.tistory.com/25" class="link_board">삼성 대학생 프로그래밍 대..</a></li>
+									
+
+										<li><a href="http://bowbowbow.tistory.com/24" class="link_board">[기하] 다각형의 내부 외부..</a></li>
+									
+
+										<li><a href="http://bowbowbow.tistory.com/23" class="link_board">[BOJ] 7737 삼각분할 (n각..</a></li>
+									
+								</ul>
+							</div>
+							
+							<!-- 최근에 달린 댓글 -->
+								<div class="box_aside">
+									<strong>최근에 달린 댓글</strong>
+									<ul class="list_board">
+										
+											<li><a href="http://bowbowbow.tistory.com/10#comment5389814" class="link_board">버블정렬 5 3 7 9 1
+
+1회전 3..</a></li>
+										
+
+											<li><a href="http://bowbowbow.tistory.com/24#comment5381455" class="link_board">정말 잘 이해하고 갑니다.. N..</a></li>
+										
+
+											<li><a href="http://bowbowbow.tistory.com/9#comment5378970" class="link_board">감사합니다 :D</a></li>
+										
+
+											<li><a href="http://bowbowbow.tistory.com/12#comment5378347" class="link_board">좋은 자료 감사합니다.
+
+다만..</a></li>
+										
+									</ul>
+								</div>
+							
+							<!-- 방문자수 -->
+								<div class="box_aside lst">
+									<dl class="list_total">
+										<dt>Total</dt>
+										<dd>191,481</dd>
+									</dl>
+									<dl class="list_visitor">
+										<dt>Today</dt>
+										<dd>391</dd>
+									</dl>
+									<dl class="list_visitor">
+										<dt>Yesterday</dt>
+										<dd>345</dd>
+									</dl>
+								</div>
+							
+							<!-- 링크 
+								<div class="box_aside">
+									<strong>링크</strong>
+									<ul class="list_board">
+										
+											<li><a href="https://journee912.tistory.com" class="link_board" target="_blank">개발노트</a></li>
+										
+
+											<li><a href="http://hongjun7.tistory.com" class="link_board" target="_blank">Note. Hongjun Jang</a></li>
+										
+
+											<li><a href="http://wspace.tistory.com" class="link_board" target="_blank">Joon Young Wie</a></li>
+										
+
+											<li><a href="https://nanite-vault.tistory.com" class="link_board" target="_blank">코코넛창고</a></li>
+										
+
+											<li><a href="http://moaing.tistory.com" class="link_board" target="_blank">코가 신기한 모아잉</a></li>
+										
+									</ul>
+								</div>
+							-->
+							
+							<!-- 달력 
+							<div class="box_aside">
+									<table class="tt-calendar" cellpadding="0" cellspacing="1" style="width: 100%; table-layout: fixed">
+			<caption class="cal_month">
+				<a href="/archive/201809" title="1개월 앞의 달력을 보여줍니다.">&laquo;</a>
+				&nbsp;
+				<a href="/archive/201810"
+				   title="현재 달의 달력을 보여줍니다.">2018/10</a>
+				&nbsp;
+				<a href="/archive/201811" title="1개월 뒤의 달력을 보여줍니다.">&raquo;</a>
+			</caption>
+			<thead>
+			<tr>
+				<th class="cal_week2">일</th>
+				<th class="cal_week1">월</th>
+				<th class="cal_week1">화</th>
+				<th class="cal_week1">수</th>
+				<th class="cal_week1">목</th>
+				<th class="cal_week1">금</th>
+				<th class="cal_week1">토</th>
+			</tr>
+			</thead>
+			<tbody>
+					<tr class="cal_week">
+			<td class="cal_day1">&nbsp;</td>
+			<td class=" cal_day cal_day3">1</td>
+			<td class=" cal_day cal_day3">2</td>
+			<td class=" cal_day cal_day3">3</td>
+			<td class=" cal_day cal_day3">4</td>
+			<td class=" cal_day cal_day3">5</td>
+			<td class=" cal_day cal_day3">6</td>
+		</tr>
+		<tr class="cal_week">
+			<td class=" cal_day cal_day_sunday cal_day3">7</td>
+			<td class=" cal_day cal_day3">8</td>
+			<td class=" cal_day cal_day3">9</td>
+			<td class=" cal_day cal_day3">10</td>
+			<td class=" cal_day cal_day3">11</td>
+			<td class=" cal_day cal_day3">12</td>
+			<td class=" cal_day cal_day3">13</td>
+		</tr>
+		<tr class="cal_week cal_current_week">
+			<td class=" cal_day cal_day_sunday cal_day3">14</td>
+			<td class=" cal_day cal_day4">15</td>
+			<td class=" cal_day cal_day3">16</td>
+			<td class=" cal_day cal_day3">17</td>
+			<td class=" cal_day cal_day3">18</td>
+			<td class=" cal_day cal_day3">19</td>
+			<td class=" cal_day cal_day3">20</td>
+		</tr>
+		<tr class="cal_week">
+			<td class=" cal_day cal_day_sunday cal_day3">21</td>
+			<td class=" cal_day cal_day3">22</td>
+			<td class=" cal_day cal_day3">23</td>
+			<td class=" cal_day cal_day3">24</td>
+			<td class=" cal_day cal_day3">25</td>
+			<td class=" cal_day cal_day3">26</td>
+			<td class=" cal_day cal_day3">27</td>
+		</tr>
+		<tr class="cal_week">
+			<td class=" cal_day cal_day_sunday cal_day3">28</td>
+			<td class=" cal_day cal_day3">29</td>
+			<td class=" cal_day cal_day3">30</td>
+			<td class=" cal_day cal_day3">31</td>
+			<td class="cal_day2">&nbsp;</td>
+			<td class="cal_day2">&nbsp;</td>
+			<td class="cal_day2">&nbsp;</td>
+		</tr>
+			</tbody>
+		</table>
+		
+							</div>
+							-->
+							
+							<!-- 글 보관함 
+								<div class="box_aside lst">
+									<strong>글 보관함</strong>
+									<ul class="list_keep">
+										
+											<li><a href="/archive/201607" class="link_keep">2016/07</a> (1)</li>
+										
+
+											<li><a href="/archive/201606" class="link_keep">2016/06</a> (1)</li>
+										
+
+											<li><a href="/archive/201605" class="link_keep">2016/05</a> (3)</li>
+										
+
+											<li><a href="/archive/201604" class="link_keep">2016/04</a> (4)</li>
+										
+									</ul>
+								</div>
+							-->
+							
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="hide">
+		<div id="dkFoot" role="contentinfo" class="area_foot">
+			Blog is powered by
+			<em class="emph_t">Tistory</em> / Designed by
+			<em class="emph_t">Tistory</em>
+		</div>
+	</div>
+
+
+<script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/script.js"></script>
+<script>
+(function($) {
+	$.Area.init();
+	$(".tt_article_useless_p_margin").removeClass( "tt_article_useless_p_margin");
+})(jQuery);
+</script>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-72508291-1', 'auto');
+	ga('send', 'pageview');
+</script><script>
+    (function($) {
+        $("body").bind('copy', function (e) {
+
+            var url = document.location.href,
+                decodedUrl = decodeURI(url),
+                selection = window.getSelection();
+
+
+            if (typeof window.getSelection == "undefined") {//IE8 or earlier...
+                event.preventDefault();
+
+                var pagelink = '\n\n 출처: ' + decodedUrl,
+                    copytext = selection + pagelink;
+
+                if (window.clipboardData) {
+                    window.clipboardData.setData('Text', copytext);
+                }
+                return;
+            }
+            var body_element = document.getElementsByTagName('body')[0];
+
+            //if the selection is short let's not annoy our users
+            if (("" + selection).length < 30) return;
+
+            //create a div outside of the visible area
+            var newdiv = document.createElement('div');
+            newdiv.style.position = 'absolute';
+            newdiv.style.left = '-99999px';
+            body_element.appendChild(newdiv);
+            newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+            //we need a <pre> tag workaround
+            //otherwise the text inside "pre" loses all the line breaks!
+            if (selection.getRangeAt(0).commonAncestorContainer.nodeName == "PRE") {
+                newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+            }
+
+            newdiv.innerHTML += '<br /><br />출처: <a href="' + url + '">' + decodedUrl + '</a> [멍멍멍]';
+
+            selection.selectAllChildren(newdiv);
+            window.setTimeout(function () {
+                body_element.removeChild(newdiv);
+            }, 200);
+
+        });
+    })(tjQuery);
+</script><script src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/lightbox.min.js"></script><div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href="http://bowbowbow.tistory.com/8"></a><a class="lb-next" href="http://bowbowbow.tistory.com/8"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
+	<script>
+	    lightbox.option({
+			"fadeDuration": 200,
+		    "resizeDuration": 200,
+		    "wrapAround": false,
+			"albumLabel": "%1 / %2",
+			"fitImagesInViewport":true ,
+			"stopEvent": false
+	    })
+	</script><script type="text/javascript">
+var _tiq = 'undefined' !== typeof _tiq ? _tiq : [];
+_tiq.push(['__setConfig', {enableScroll:true, enableClick:true, enableButton:true}]);
+_tiq.push(["__setParam", "svcdomain", "user.tistory.com"]);
+(function(d) {
+	var se = d.createElement('script'); se.type = 'text/javascript'; se.async = true;
+	se.src = location.protocol + '//m2.daumcdn.net/tiara/js/td.min.js';
+	var s = d.getElementsByTagName('head')[0]; s.appendChild(se);
+})(document);
+_tiq.push(['__setParam', 'param_ex', JSON.stringify({"userId":"1461533","blogId":"1940220","entryId":"8"})]);
+_tiq.push(['__trackPageview']);
+_tiq.push(['__content', 't_content', {
+'c_id':'1940220_8', 
+'c_title':'Counting Sort : 계수 정렬', 
+'type':'article', 
+'author':'', 
+'author_id':'1461533', 
+'cp':'멍멍멍', 
+'cp_id':'1940220', 
+'regdata':'2016-02-28 23:11:21', 
+'plink':'http://bowbowbow.tistory.com/8', 
+'media':'pcweb', 
+}]);
+var addEvent = function (evt, fn) { window.addEventListener ? window.addEventListener(evt, fn, false) : window.attachEvent('on' + evt, fn); };
+var removeEvent = function(evt, fn) { window.removeEventListener ? window.removeEventListener(evt, fn, false) : window.detachEvent('on' + evt, fn);};
+var ua = navigator.userAgent.toLowerCase(); var isIOS = /iP[ao]d|iPhone/i.test(ua);
+var contentExStat = function() {
+		_tiq.push(['__content', 't_content_ex', {
+			'data_type':'usage'
+, 'meta': {
+'c_id':'1940220_8', 
+'c_title':'Counting Sort : 계수 정렬', 
+'type':'article', 
+'author':'', 
+'author_id':'1461533', 
+'cp':'멍멍멍', 
+'cp_id':'1940220', 
+'regdata':'2016-02-28 23:11:21', 
+'plink':'http://bowbowbow.tistory.com/8', 
+'media':'pcweb', 
+}
+}]);
+		removeEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+};
+addEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+</script>
+<script type="text/javascript">window.roosevelt_params_queue = window.roosevelt_params_queue || []; window.roosevelt_params_queue.push({channel_id: "dk", channel_label: 'tistory'});</script>
+<script type="text/javascript" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/roosevelt_dk_bt.js" async=""></script><script type="text/javascript">if(window.console!=undefined){setTimeout(console.log.bind(console,"%cTISTORY","font:8em Arial;color:#EC6521;font-weight:bold"),0);setTimeout(console.log.bind(console,"%c  나를 표현하는 블로그","font:2em sans-serif;color:#333;"),0);}</script><iframe style="position:absolute;width:1px;height:1px;left:-100px;top:-100px" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/api.html" id="editEntry"></iframe><div id="layer_sns" class="layer_sns">
+        <div class="bg_layer"></div>
+        <ul class="list_sns">
+            <li><a class="ico_sns ico_fb" data-service="facebook">페이스북 공유하기</a></li>
+            <li><a class="ico_sns ico_kt" data-service="kakaotalk">카카오톡 공유하기</a></li>
+            <li><a class="ico_sns ico_ks" data-service="kakaostory">카카오스토리 공유하기</a></li>
+            <li><a class="ico_sns ico_tw" data-service="twitter">트위터 공유하기</a></li>
+        </ul>
+        <button type="button" class="btn_close"><span class="ico_sns ico_close">sns공유하기 레이어 닫기</span></button>
+    </div>
+
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:NaNpx;margin:0;padding:0;position:relative;visibility:visible;width:NaNpx;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:NaNpx;margin:0;padding:0;position:relative;visibility:visible;width:NaNpx;background-color:transparent;"><iframe frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:NaNpx;height:NaNpx;" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/saved_resource.html"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_3753148095079" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./Counting Sort _ 계수 정렬 - 멍멍멍_files/saved_resource(1).html"></iframe></body></html>
